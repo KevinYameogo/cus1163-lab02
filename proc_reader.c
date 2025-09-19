@@ -49,9 +49,9 @@ int read_process_info(const char* pid) {
         fprintf(stderr, "Failed to read %s\n", filepath);
         return -1;
     }
-    printf("\n"); // Add extra newline for readability
+    printf("\n"); 
 
-    return 0; // Replace with proper error handling
+    return 0; 
 }
 
 int show_system_info(void) {
@@ -123,8 +123,8 @@ int read_file_with_syscalls(const char* filename) {
         return -1;
     }
     while ((bytes_read = read(fd, buffer, sizeof(buffer) - 1)) > 0) {
-        buffer[bytes_read] = '\0';   // Null-terminate
-        printf("%s", buffer);        // Print the chunk
+        buffer[bytes_read] = '\0';   
+        printf("%s", buffer);        
     }
     if (bytes_read == -1) {
         perror("read failed");
@@ -136,7 +136,7 @@ int read_file_with_syscalls(const char* filename) {
         perror("close failed");
         return -1;
     }
-    return 0; // Replace with proper error handling
+    return 0; 
 }
 
 int read_file_with_library(const char* filename) {
@@ -150,7 +150,7 @@ int read_file_with_library(const char* filename) {
     }
    
     while (fgets(buffer, sizeof(buffer), file) != NULL) {
-        printf("%s", buffer); // Print each line read
+        printf("%s", buffer); 
     }
     if (ferror(file)) {
         perror("fgets failed");
@@ -162,18 +162,18 @@ int read_file_with_library(const char* filename) {
         perror("fclose failed");
         return -1;
     }
-    return 0; // Replace with proper error handling
+    return 0;
 }
 
 int is_number(const char* str) {
     if (str == NULL || *str == '\0') {
-        return 0;  // Return 0 for empty strings
+        return 0;  
     }
     
     const char *p = str;
     while (*p != '\0') {
-        if (!isdigit((unsigned char)*p)) { // Use isdigit
-            return 0; // Not a number
+        if (!isdigit((unsigned char)*p)) {
+            return 0; 
         }
         p++;
     }
